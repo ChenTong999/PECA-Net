@@ -1,13 +1,15 @@
 # A Hybrid Framework Integrating Paired External and Convolutional Attention for 3D Medical Image Segmentation
 Tong Chen, Qinlan Xie, and Xuesong Lu are with the School of Biomedical Engineering, South-Central Minzu University.(Corresponding Author: Xuesong Lu)
 ***
- <img src="https://github.com/ChenTong999/PECA-Net/raw/master/DSC.png" width = "400" height = "400" alt="DSC" align=center />
- 
+
 ### Abstract
 The CNN-Transforerm hybrid methods have shown promising performance in medical image segmentation, due to the collaboration of global dependencies and local context. However, the self-attention operation with quadratic complexity models global correlations within individual samples, which is problematic for 3D image segmentation. To address this issue, we propose PECA-Net integrating external attention with convolution for volumetric medical image segmentation. Initially, paired external attention capturing the relationships between different samples is developed by the inter-dependent spatial and channel branches. The sharing queries-keys and different value layers are designed to efficiently learn enriched spatial-channel features, yielding the linear complexity with respect to the input. Additionally, multi-head mechanism built in paired external attention can make all heads interact together. Finally, the spatial and channel attention based on convolution is combined with paired external attention, to provide complementary benefits and serve as the backbone network.
 ***
 
-## Architecture overview of PECA-Net
+### Architecture overview of PECA-Net
 Overview of PECA-Net approach with hierarchical encoder-decoder structure. The core of the PECA-Net framework is the parallel interaction model (PIM) consisting of paired external attention (PEA) and paired convolutional attention (PCA), which could learn feature representations of global dependencies and local context with efficient computation. The hierarchical encoder comprises four stages, where the resolution of features and the number of channels are respectively decreased and increased by a factor of two in each stage. Concretely, the first stage involves patch embedding layer, followed by our novel PIM. In the patch embedding, the 3D input is partitioned into non-overlapping patches. Then the patches are transformed into channel dimensions, resulting in a high-dimensional tensor. For each remaining stages, a convolutional downsampling layer is employed to decrease the image resolution, followed by the PIM. To fuse global and local features, the PIM consists of two attention blocks (PEA and PCA) that both encode information in spatial and channel dimensions. Instead of self-attention mechanism, the PEA block through external attention captures the correlations of different samples across the whole dataset. The resulting feature maps from the encoder are merged into corresponding feature pyramids of the decoder via skip connections. In each stage of the decoder, the resolution of features and the number of channels are respectively doubled and halved by an upsampling layer using transposed convolution.
-
 <img src="https://github.com/ChenTong999/PECA-Net/raw/master/Architecture overview of PECA-Net.png" width = "800" height = "1600" alt="DSC" align=center />
+
+### Parameter Count Comparison
+PECA-Net achieves the lowest trainable parameter count among comparative frameworks.These results conclusively demonstrate PECA-UNet's parametric efficiency in balancing model complexity and segmentation accuracy.
+<img src="https://github.com/ChenTong999/PECA-Net/raw/master/DSC.png" width = "400" height = "400" alt="DSC" align=center />
