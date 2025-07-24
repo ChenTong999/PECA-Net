@@ -32,6 +32,6 @@ In the Tumor dataset, the indistinct boundaries of the regions of interest pose 
 | nnU-Net  | 84.10   | 91.70   | 78.40   | 82.10   |
 | UNETR++  | 84.66   | 91.36   | 78.23   | 84.40   |
 | PECA-Net  | 85.85  | 91.74   | 79.83   | 85.97  |
-<img src="https://github.com/ChenTong999/PECA-Net/raw/master/PECA_Tumor.png" width = "600" height = "700" alt="DSC" align=center />
+<img src="https://github.com/ChenTong999/PECA-Net/raw/master/PECA_Tumor.png" width = "500" height = "600" alt="DSC" align=center />
 
 ## Installation
