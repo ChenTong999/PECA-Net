@@ -23,4 +23,20 @@ PECA-Net achieves the lowest trainable parameter count among comparative framewo
 ### Tumor Dataset
 In the Tumor dataset, the indistinct boundaries of the regions of interest pose a significant challenge for segmentation. In the labeled images, it is evident that the boundaries to be segmented are characterized by irregularity, ambiguity, and the presence of multiple overlapping boundaries. The PECA-UNet’s ability to capture spatial-channel dependencies across the entire dataset significantly enhances its performance in addressing such challenges. 
 
+| Methods | Average | WT | ET | TC |
+| ---------- | -----------| ---------- | -----------| -----------|
+| TransUNet   | 64.40   | 70.60   | 54.20   | 68.40   |
+| U-Net  | 66.40   | 76.60   | 56.10   | 66.50   |
+| Att-UNet  | 66.50   | 76.70   | 54.30  | 68.30   |
+| CoTr  | 68.30   | 74.60   | 55.70   | 74.80   |
+| TransBTS  | 69.60   | 77.90   | 57.40   | 73.50   |
+| UNETR  | 71.10   | 78.90   | 58.50   | 76.10   |
+| Swin-UNet  | 82.40   | 88.60   | 76.90   | 81.60   |
+| nnU-Net  | 84.10   | 91.70   | 78.40   | 82.10   |
+| UNETR++  | 84.66   | 91.36   | 78.23   | 84.40   |
+| PECA-Net  | 85.85  | 91.74   | 79.83   | 85.97  |
+
 <img src="https://github.com/ChenTong999/PECA-Net/raw/master/PECA_Tumor.png" width = "600" height = "700" alt="DSC" align=center />
+***
+
+## Installation
