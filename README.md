@@ -1,2 +1,2 @@
-# PECA-Net
-A 3D medical image segmentation network combining CNN and attention mechanism.
+# A Hybrid Framework Integrating Paired External and Convolutional Attention for 3D Medical Image Segmentation
+
