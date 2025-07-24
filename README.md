@@ -11,7 +11,7 @@ Overview of PECA-Net approach with hierarchical encoder-decoder structure. The c
 <img src="https://github.com/ChenTong999/PECA-Net/raw/master/Architecture overview of PECA-Net.png" width = "800" height = "1600" alt="Architecture" align=center />
 
 ### Parameter Count Comparison
-PECA-Net achieves the lowest trainable parameter count among comparative frameworks.These results conclusively demonstrate PECA-UNet's parametric efficiency in balancing model complexity and segmentation accuracy.
+PECA-Net achieves the lower trainable parameter count among comparative frameworks.These results conclusively demonstrate PECA-UNet's parametric efficiency in balancing model complexity and segmentation accuracy.
 
 <img src="https://github.com/ChenTong999/PECA-Net/raw/master/DSC.png" width = "400" height = "400" alt="DSC" align=center />
 
