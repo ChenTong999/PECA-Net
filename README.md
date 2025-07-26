@@ -7,19 +7,17 @@ Tong Chen, Qinlan Xie, and Xuesong Lu are with the School of Biomedical Engineer
 
 ### Architecture overview of PECA-Net
 >Overview of PECA-Net approach with hierarchical encoder-decoder structure. The core of the PECA-Net framework is the parallel interaction model (PIM) consisting of paired external attention (PEA) and paired convolutional attention (PCA), which could learn feature representations of global dependencies and local context with efficient computation. The hierarchical encoder comprises four stages, where the resolution of features and the number of channels are respectively decreased and increased by a factor of two in each stage. Concretely, the first stage involves patch embedding layer, followed by our novel PIM. In the patch embedding, the 3D input is partitioned into non-overlapping patches. Then the patches are transformed into channel dimensions, resulting in a high-dimensional tensor. For each remaining stages, a convolutional downsampling layer is employed to decrease the image resolution, followed by the PIM. To fuse global and local features, the PIM consists of two attention blocks (PEA and PCA) that both encode information in spatial and channel dimensions. Instead of self-attention mechanism, the PEA block through external attention captures the correlations of different samples across the whole dataset. The resulting feature maps from the encoder are merged into corresponding feature pyramids of the decoder via skip connections. In each stage of the decoder, the resolution of features and the number of channels are respectively doubled and halved by an upsampling layer using transposed convolution.
-
 <img src="https://github.com/ChenTong999/PECA-Net/raw/master/Architecture overview of PECA-Net.png" width = "800" height = "1600" alt="Architecture" align=center />
 
 ### Parameter Count Comparison
 >PECA-Net achieves the lower trainable parameter count among comparative frameworks.These results conclusively demonstrate PECA-UNet's parametric efficiency in balancing model complexity and segmentation accuracy.
-
 <img src="https://github.com/ChenTong999/PECA-Net/raw/master/DSC.png" width = "400" height = "400" alt="DSC" align=center />
 
 ## Results
 
 ### Tumor Dataset
->In the Tumor dataset, the indistinct boundaries of the regions of interest pose a significant challenge for segmentation. In the labeled images, it is evident that the boundaries to be segmented are characterized by irregularity, ambiguity, and the presence of multiple overlapping boundaries. The PECA-UNet’s ability to capture spatial-channel dependencies across the entire dataset significantly enhances its performance in addressing such challenges. 
-
+>In the Tumor dataset, the indistinct boundaries of the regions of interest pose a significant challenge for segmentation. In the labeled images, it is evident that the boundaries to be segmented are characterized by irregularity, ambiguity, and the presence of multiple overlapping boundaries. The PECA-UNet’s ability to capture spatial-channel dependencies across the entire dataset significantly enhances its performance in addressing such challenges.
+>
 | Methods | Average | WT | ET | TC |
 | :----------: | :-----------:| :----------: | :-----------:| :-----------:|
 | TransUNet   | 64.40   | 70.60   | 54.20   | 68.40   |
@@ -40,56 +38,90 @@ We run PECA_Net on a system running Windows 10 with Python 3.6, PyTorch 1.11.0 a
 
 ### Installation guide
 1. Create and activate conda environment
-"""cmd
+
+```
 conda create --name PECA_Net python=3.6
-conda activate PECA_Net"""
+conda activate PECA_Net
+```
 
 2. Install PyTorch and torchvision
-"""cmd
-pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113"""
+
+```
+pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
+```
 
 3. Install other dependencies
-"""cmd
-pip install -r requirements.txt"""
+
+```
+pip install -r requirements.txt
+```
 
 ### Functions of scripts and folders
 1. Evaluation
-"""cmd
-PECA_Net/inference_acdc.py"""
 
-"""cmd
-PECA_Net/inference_synapse.py"""
+```
+PECA_Net/inference_acdc.py
+```
 
-"""cmd
-PECA_Net/inference_tumor.py"""
+```
+PECA_Net/inference_synapse.py
+```
+
+```
+PECA_Net/inference_tumor.py
+```
 
 2. Inference
-"""cmd
-PECA_Net/inference/predict_simple.py"""
+```
+PECA_Net/inference/predict_simple.py
+```
 
 3. Network architecture
-"""cmd
-PECA_Net/network_architecture/PECA_Net_acdc.py"""
+```
+PECA_Net/network_architecture/PECA_Net_acdc.py
+```
 
-"""cmd
-PECA_Net/network_architecture/PECA_Net_synapse.py"""
+```
+PECA_Net/network_architecture/PECA_Net_synapse.py
+```
 
-"""cmd
-PECA_Net/network_architecture/PECA_Net_tumor.py"""
+```
+PECA_Net/network_architecture/PECA_Net_tumor.py
+```
+
+4. Training
+```
+PECA_Net/run/run_training.py
+```
+
+5. Trainer for dataset
+```
+PECA_Net/training/network_training/PECA_NetTrainerV2_acdc.py
+```
+
+```
+PECA_Net/training/network_training/PECA_NetTrainerV2_synapse.py
+```
+
+```
+PECA_Net/training/network_training/PECA_NetTrainerV2_tumor.py
+```
 ***
 
 ## Dataset
 Dataset can be acquired via following links:
 
 [ACDC](https://www.creatis.insa-lyon.fr/Challenge/acdc/)
+
 [Synapse](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/abdelrahman_youssief_mbzuai_ac_ae/EbHDhSjkQW5Ak9SMPnGCyb8BOID98wdg3uUvQ0eNvTZ8RA?e=YVhfdg)
+
 [Toumer](http://medicaldecathlon.com/)
 
 The splits of all three datasets are available in dataset_json.
 
-After you have downloaded the datasets, you can follow the settings in [nnUNet]([https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/dataset_conversion.md](https://github.com/MIC-DKFZ/nnUNet/tree/master) for path configurations and preprocessing procedures. Finally, your folders should be organized as follows:
+After you have downloaded the datasets, you can follow the settings in [nnUNet](https://github.com/MIC-DKFZ/nnUNet/tree/master) for path configurations and preprocessing procedures. Finally, your folders should be organized as follows:
 
-"""cmd
+```
 ./PECA_Net/
 ./DATASET/
   ├── PECA_Net_raw/
@@ -114,15 +146,17 @@ After you have downloaded the datasets, you can follow the settings in [nnUNet](
               ├── dataset.json
       ├── PECA_Net_cropped_data/
   ├── PECA_Net_trained_models/
-  ├── PECA_Net_preprocessed/"""
+  ├── PECA_Net_preprocessed/
+```
 
 After that, you can preprocess the above data using following commands:
 
-"""cmd
+```
 nnFormer_convert_decathlon_task -i ../DATASET/nnFormer_raw/nnFormer_raw_data/Task01_ACDC
 nnFormer_convert_decathlon_task -i ../DATASET/nnFormer_raw/nnFormer_raw_data/Task02_Synapse
 nnFormer_convert_decathlon_task -i ../DATASET/nnFormer_raw/nnFormer_raw_data/Task03_tumor
 
 nnFormer_plan_and_preprocess -t 1
 nnFormer_plan_and_preprocess -t 2
-nnFormer_plan_and_preprocess -t 3"""
+nnFormer_plan_and_preprocess -t 3
+```
