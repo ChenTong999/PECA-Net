@@ -40,7 +40,7 @@ We run PECA_Net on a system running Windows 10 with Python 3.6, PyTorch 1.11.0 a
 1. Create and activate conda environment
 
 ```
-conda create --name PECA_Net python=3.6
+conda create --name PECA_Net python=3.7
 conda activate PECA_Net
 ```
 
