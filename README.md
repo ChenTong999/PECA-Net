@@ -34,7 +34,7 @@ Tong Chen, Qinlan Xie, and Xuesong Lu are with the School of Biomedical Engineer
 
 ## Installation
 ### System requirements
-We run PECA_Net on a system running Windows 10 with Python 3.6, PyTorch 1.11.0 and CUDA 11.3. The software was tested with the NVIDIA TITAN RTX GPU, though we anticipate that other GPUs will also work, provided that the unit offers sufficient memory.
+We run PECA_Net on a system running Windows 10 with Python 3.7, PyTorch 1.11.0 and CUDA 11.3. The software was tested with the NVIDIA TITAN RTX GPU, though we anticipate that other GPUs will also work, provided that the unit offers sufficient memory.
 
 ### Installation guide
 1. Create and activate conda environment
